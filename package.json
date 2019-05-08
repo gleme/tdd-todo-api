@@ -13,9 +13,40 @@
     "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "clean": "npx rimraf build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  },
+  "nyc": {
+    "all": true,
+    "sourceMap": false,
+    "instrument": false,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "keywords": [
+    "tdd",
+    "todo",
+    "nodejs",
+    "mongoose"
+  ],
+  "author": "Gustavo Leme",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

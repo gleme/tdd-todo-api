@@ -8,4 +8,6 @@ const userSchema = new Schema({
   birthDate: { type: Date }
 });
 
-module.exports = mongoose.model('user', userSchema);
+const User = mongoose.model('user', userSchema);
+
+module.exports = User;

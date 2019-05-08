@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo \"To be developed\"",
+    "dev": "echo \"To be developed\"",
+    "build": "npx babel serc/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
+    "test": "npx mocha tests/**/*.spec.js --require @babel/register",
+    "test:tdd": "npm run test -- --watch",
+    "test:coverage": "npx cross-env NODE_ENV=test nyc npm test",
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
+    "clean": "npx rimraf build"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +29,7 @@
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
     "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",

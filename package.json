@@ -6,7 +6,7 @@
   "scripts": {
     "start": "echo \"To be developed\"",
     "dev": "echo \"To be developed\"",
-    "build": "npx babel serc/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
+    "build": "npx babel src/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
     "test": "npx mocha tests/**/*.spec.js --require @babel/register",
     "test:tdd": "npm run test -- --watch",
     "test:coverage": "npx cross-env NODE_ENV=test nyc npm test",

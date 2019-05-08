@@ -3,7 +3,7 @@ const moment = require('moment');
 
 function givenUser() {
   return {
-    id: bson.ObjectID(),
+    _id: new bson.ObjectID(),
     firstName: 'Gustavo',
     lastName: 'Leme',
     email: 'gleme@nevada.unr.edu',

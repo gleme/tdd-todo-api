@@ -48,8 +48,10 @@ describe('User', () => {
       it('should not create an user with a known invalid email (regex)', () => {
         const user = new User({ firstName, lastName, email: 'fake-email' });
         const user2 = new User({ firstName, lastName, email: 'fake-email@' });
+        const user3 = new User({ firstName, lastName, email: 'fake@fake-email' });
         expect(user.validateSync()).to.be.instanceOf(Error);
         expect(user2.validateSync()).to.be.instanceOf(Error);
+        expect(user3.validateSync()).to.be.instanceOf(Error);
       });
     });
   });

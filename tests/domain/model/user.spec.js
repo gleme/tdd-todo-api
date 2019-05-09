@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const User = require('../../../../src/domain/model/user');
-const { givenUser } = require('../../../helpers/model-mocks');
+const User = require('../../../src/domain/model/user');
+const { givenUser } = require('../../helpers/model-mocks');
 
 describe('User (unit)', () => {
   describe('smoke tests', () => {
@@ -30,18 +30,23 @@ describe('User (unit)', () => {
     });
 
     describe('constructor', () => {
-      it('should not create an user without email', () => {
+      it('should not create an user without an email', () => {
         const user = new User({ firstName, lastName });
         expect(user.validateSync()).to.be.instanceOf(Error);
       });
 
-      it('should not create an user without first name', () => {
+      it('should not create an user without a first name', () => {
         const user = new User({ email, lastName });
         expect(user.validateSync()).to.be.instanceOf(Error);
       });
 
-      it('should not create an user without last name', () => {
+      it('should not create an user without a last name', () => {
         const user = new User({ email, firstName });
+        expect(user.validateSync()).to.be.instanceOf(Error);
+      });
+
+      it('should not create an user with a known invalid email (regex)', () => {
+        const user = new User({ firstName, lastName, email: 'fake-email' });
         expect(user.validateSync()).to.be.instanceOf(Error);
       });
     });

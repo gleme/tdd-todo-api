@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const User = require('../../../src/domain/model/user');
 const { givenUser } = require('../../helpers/model-mocks');
 
-describe('User (unit)', () => {
+describe('User', () => {
   describe('smoke tests', () => {
     it('should exist an User model', () => {
       expect(User).to.exist;

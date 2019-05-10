@@ -8,7 +8,7 @@
     "dev": "echo \"To be developed\"",
     "build": "npx babel src/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
     "lint": "npx eslint src/**/*.js --config .eslintrc.json",
-    "test": "npx mocha tests/**/*.spec.js --require @babel/register",
+    "test": "npx mocha \"tests/**/*.spec.js\" --require @babel/register",
     "test:tdd": "nodemon --exec \"npm run test\"",
     "test:coverage": "npx cross-env NODE_ENV=test nyc npm test",
     "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",

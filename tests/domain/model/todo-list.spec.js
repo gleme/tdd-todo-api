@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { TodoList } = require('../../../src/domain/model/todo-list');
-const { givenTodoList, givenTodo } = require('../../helpers/model-mocks');
+const { givenTodoList, givenTodo } = require('../../helpers/mocks');
 
 describe('TodoList', () => {
   describe('smoke tests', () => {

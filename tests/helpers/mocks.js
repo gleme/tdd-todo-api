@@ -23,7 +23,7 @@ function givenTodo() {
 function givenTodoList() {
   return {
     title: 'My Todo List',
-    userId: new bson.ObjectID(),
+    userId: givenUser()._id,
     todos: [givenTodo()]
   };
 }

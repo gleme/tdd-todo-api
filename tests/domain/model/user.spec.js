@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const User = require('../../../src/domain/model/user');
-const { givenUser } = require('../../helpers/model-mocks');
+const { givenUser } = require('../../helpers/mocks');
 
 describe('User', () => {
   describe('smoke tests', () => {

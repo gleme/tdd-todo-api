@@ -11,6 +11,25 @@ function givenUser() {
   };
 }
 
+function givenTodo() {
+  return {
+    _id: new bson.ObjectID(),
+    description: 'Make TDD presentation',
+    done: false,
+    dueDate: moment('10/05/2019', 'DD/MM/YYYY').toDate()
+  };
+}
+
+function givenTodoList() {
+  return {
+    title: 'My Todo List',
+    userId: new bson.ObjectID(),
+    todos: [givenTodo()]
+  };
+}
+
 module.exports = {
-  givenUser
+  givenUser,
+  givenTodo,
+  givenTodoList
 };

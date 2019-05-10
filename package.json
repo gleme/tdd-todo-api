@@ -6,21 +6,54 @@
   "scripts": {
     "start": "echo \"To be developed\"",
     "dev": "echo \"To be developed\"",
-    "build": "npx babel serc/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
-    "test": "npx mocha tests/**/*.spec.js --require @babel/register",
-    "test:tdd": "npm run test -- --watch",
+    "build": "npx babel src/ --out-dir build/ --source-maps inline --copy-files --ignore spec.js",
+    "lint": "npx eslint src/**/*.js --config .eslintrc.json",
+    "test": "npx mocha \"tests/**/*.spec.js\" --require @babel/register",
+    "test:tdd": "nodemon --exec \"npm run test\"",
     "test:coverage": "npx cross-env NODE_ENV=test nyc npm test",
     "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "clean": "npx rimraf build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "nyc": {
+    "all": true,
+    "sourceMap": false,
+    "instrument": false,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "keywords": [
+    "tdd",
+    "todo",
+    "nodejs",
+    "mongoose"
+  ],
+  "author": "Gustavo Leme",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "mongoose": "^5.5.6"
   },
   "devDependencies": {
@@ -31,6 +64,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
     "babel-plugin-istanbul": "^5.1.4",
+    "bson": "^4.0.2",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
@@ -38,6 +72,7 @@
     "eslint": "^5.16.0",
     "husky": "^2.2.0",
     "mocha": "^6.1.4",
+    "nodemon": "^1.19.0",
     "nyc": "^14.1.0",
     "prettier": "^1.17.0",
     "prettier-eslint": "^8.8.2",
